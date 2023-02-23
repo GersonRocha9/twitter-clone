@@ -1,30 +1,20 @@
+import { Form, Header, Separator } from "../../components";
+
 import { Sparkle } from "phosphor-react";
-import { Button } from "../Button";
 import { ContentContainer } from "./styles";
 
 export const Content = () => {
   return (
     <ContentContainer>
-      <header>
-        Home
-        <Sparkle size={24} color="#1da1f2" />
-      </header>
+      <Header title="Home" icon={<Sparkle size={24} color="#1da1f2" />} />
 
-      <form>
-        <label htmlFor="tweet">
-          <img
-            src="https://avatars.githubusercontent.com/u/38770302?v=4"
-            alt="User Avatar"
-          />
-          <textarea id="tweet" placeholder="What's happening?" />
-        </label>
+      <Form
+        placeholder="What's happening?"
+        imgAlt="User Avatar"
+        imgSrc="https://avatars.githubusercontent.com/u/38770302?v=4"
+      />
 
-        <Button width="120px" type="submit" label="Tweet" />
-      </form>
-
-      <div className="separator" />
+      <Separator />
     </ContentContainer>
   );
 };
-
-// TODO: Componentizar o header, form e o separator
