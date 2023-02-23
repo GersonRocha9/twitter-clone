@@ -7,9 +7,10 @@ import {
   TweetParagraph,
 } from "./styles";
 
+import { useNavigate } from "react-router-dom";
+
 interface TweetProps {
   tweet: {
-    href: string;
     imgSrc: string;
     imgAlt: string;
     author: string;
@@ -23,7 +24,6 @@ interface TweetProps {
 
 export const Tweet = ({
   tweet: {
-    href,
     imgSrc,
     imgAlt,
     author,
@@ -34,8 +34,10 @@ export const Tweet = ({
     likes,
   },
 }: TweetProps) => {
+  const navigate = useNavigate();
+
   return (
-    <TweetContainer href={href}>
+    <TweetContainer onClick={() => navigate("/tweet")}>
       <img src={imgSrc} alt={imgAlt} />
 
       <TweetContent>

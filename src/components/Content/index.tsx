@@ -5,7 +5,6 @@ import { ContentContainer } from "./styles";
 
 const mockedTweets = [
   {
-    href: "#",
     imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
     imgAlt: "User Avatar",
     author: "Gerson Rocha",
@@ -17,7 +16,6 @@ const mockedTweets = [
     likes: 5,
   },
   {
-    href: "#",
     imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
     imgAlt: "User Avatar",
     author: "Gerson Rocha",
@@ -29,7 +27,6 @@ const mockedTweets = [
     likes: 5,
   },
   {
-    href: "#",
     imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
     imgAlt: "User Avatar",
     author: "Gerson Rocha",
@@ -41,7 +38,6 @@ const mockedTweets = [
     likes: 5,
   },
   {
-    href: "#",
     imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
     imgAlt: "User Avatar",
     author: "Gerson Rocha",

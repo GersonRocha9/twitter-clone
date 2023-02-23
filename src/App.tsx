@@ -1,10 +1,13 @@
-import { Content, Layout, Sidebar } from "./components";
+import { Layout, Sidebar } from "./components";
+
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes";
 
 export const App = () => {
   return (
     <Layout>
       <Sidebar />
-      <Content />
+      <RouterProvider router={router} />
     </Layout>
   );
 };

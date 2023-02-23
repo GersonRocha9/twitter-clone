@@ -7,6 +7,7 @@ export const TweetContainer = styled.a`
   gap: 0.75rem;
   border-bottom: 1px solid #ebeef0;
   text-decoration: none;
+  cursor: pointer;
 
   img {
     width: 3rem;

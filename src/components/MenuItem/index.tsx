@@ -9,7 +9,7 @@ interface MenuItemProps {
 
 export const MenuItem = ({ icon, label, active }: MenuItemProps) => {
   return (
-    <MenuItemContainer href="#" className={active ? "active" : ""}>
+    <MenuItemContainer className={active ? "active" : ""}>
       {icon}
       {label}
     </MenuItemContainer>
