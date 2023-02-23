@@ -5,17 +5,25 @@ interface FormProps {
   placeholder: string;
   imgSrc: string;
   imgAlt: string;
+  isAnswer?: boolean;
 }
 
-export const Form = ({ placeholder, imgSrc, imgAlt }: FormProps) => {
+export const Form = ({
+  placeholder,
+  imgSrc,
+  imgAlt,
+  isAnswer = false,
+}: FormProps) => {
   return (
     <FormContainer>
       <label htmlFor="tweet">
         <img src={imgSrc} alt={imgAlt} />
         <textarea id="tweet" placeholder={placeholder} />
+
+        {isAnswer && <Button width="120px" type="submit" label="Answer" />}
       </label>
 
-      <Button width="120px" type="submit" label="Tweet" />
+      {!isAnswer && <Button width="120px" type="submit" label="Tweet" />}
     </FormContainer>
   );
 };
