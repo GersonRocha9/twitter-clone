@@ -1,6 +1,7 @@
 import { Form, Header, Separator, Tweet } from "../../components";
 
 import { Sparkle } from "phosphor-react";
+import { useTheme } from "styled-components";
 import { ContentContainer } from "../../components/Content/styles";
 
 const mockedTweets = [
@@ -84,9 +85,14 @@ const mockedComments = [
 ];
 
 export const TweetPage = () => {
+  const theme = useTheme();
+
   return (
     <ContentContainer>
-      <Header title="Tweet" icon={<Sparkle size={24} color="#1da1f2" />} />
+      <Header
+        title="Tweet"
+        icon={<Sparkle size={24} color={theme.colors.base.primary} />}
+      />
 
       <Tweet tweet={mockedTweets[0]} />
 

@@ -1,6 +1,7 @@
 import { Form, Header, Separator, Tweet } from "../../components";
 
 import { Sparkle } from "phosphor-react";
+import { useTheme } from "styled-components";
 import { ContentContainer } from "./styles";
 
 const mockedTweets = [
@@ -51,9 +52,13 @@ const mockedTweets = [
 ];
 
 export const Content = () => {
+  const theme = useTheme();
   return (
     <ContentContainer>
-      <Header title="Home" icon={<Sparkle size={24} color="#1da1f2" />} />
+      <Header
+        title="Home"
+        icon={<Sparkle size={24} color={theme.colors.base.primary} />}
+      />
 
       <Form
         placeholder="What's happening?"

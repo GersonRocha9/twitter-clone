@@ -7,5 +7,5 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   font-size: 1.25rem;
   font-weight: 700;
-  border-bottom: 1px solid #ebeef0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.base.border};
 `;

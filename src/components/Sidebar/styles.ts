@@ -27,7 +27,7 @@ export const SidebarContainer = styled.aside`
     }
 
     .active {
-      color: var(--twitter-blue); // TODO: change to theme
+      color: ${({ theme }) => theme.colors.base.primary};
     }
   }
 `;

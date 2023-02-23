@@ -6,7 +6,7 @@ export const TweetContainer = styled(Link)`
   display: grid;
   grid-template-columns: 3rem 1fr;
   gap: 0.75rem;
-  border-bottom: 1px solid #ebeef0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.base.border};
   text-decoration: none;
   cursor: pointer;
 
@@ -34,7 +34,7 @@ export const TweetHeader = styled.header`
 
   span {
     font-size: 0.875rem;
-    color: #89a2b8;
+    color: ${({ theme }) => theme.colors.gray.light};
   }
 `;
 
@@ -51,10 +51,10 @@ export const TweetFooter = styled.footer`
     background: transparent;
     border: 0;
     font-size: 0.875rem;
-    color: #89a2b8;
+    color: ${({ theme }) => theme.colors.gray.light};
 
     &:hover {
-      color: var(--twitter-blue);
+      color: ${({ theme }) => theme.colors.base.primary};
     }
   }
 `;

@@ -34,7 +34,7 @@ export const FormContainer = styled.form<FormProps>`
       }
 
       &::placeholder {
-        color: #5b7083;
+        color: ${({ theme }) => theme.colors.gray.dark};
       }
     }
   }

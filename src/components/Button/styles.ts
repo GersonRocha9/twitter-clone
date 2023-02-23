@@ -7,12 +7,12 @@ interface ButtonContainerProps {
 export const ButtonContainer = styled.button<ButtonContainerProps>`
   border-radius: 9999px;
   padding: 0.75rem 1.5rem;
-  background: var(--twitter-blue); // TODO: change to theme
+  background: ${({ theme }) => theme.colors.base.primary};
   display: flex;
   justify-content: center;
   align-items: center;
   width: ${({ width }) => width || "100%"};
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 900;
   font-size: 1.25rem;
   border: 0;
