@@ -99,8 +99,6 @@ export const TweetPage = () => {
         isAnswer
       />
 
-      <Separator />
-
       {mockedComments.map((comment, index) => (
         <Tweet key={index} tweet={comment} />
       ))}

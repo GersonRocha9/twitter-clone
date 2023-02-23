@@ -9,20 +9,51 @@ import {
   User,
 } from "phosphor-react";
 
-import { MenuItem } from "../../components";
+import { Link } from "react-router-dom";
 import { MenuContainer } from "./styles";
 
 export const Menu = () => {
   return (
     <MenuContainer>
-      <MenuItem active label="Home" icon={<House weight="fill" size={32} />} />
-      <MenuItem label="Explore" icon={<Hash size={32} />} />
-      <MenuItem label="Notifications" icon={<Bell size={32} />} />
-      <MenuItem label="Messages" icon={<Envelope size={32} />} />
-      <MenuItem label="Bookmarks" icon={<BookmarkSimple size={32} />} />
-      <MenuItem label="Lists" icon={<FileText size={32} />} />
-      <MenuItem label="Profile" icon={<User size={32} />} />
-      <MenuItem label="More" icon={<DotsThreeCircle size={32} />} />
+      <Link to="/">
+        <House weight="fill" size={32} />
+        Home
+      </Link>
+
+      <Link to="/explore">
+        <Hash size={32} />
+        Explore
+      </Link>
+
+      <Link to="/notifications">
+        <Bell size={32} />
+        Notifications
+      </Link>
+
+      <Link to="/messages">
+        <Envelope size={32} />
+        Messages
+      </Link>
+
+      <Link to="/bookmarks">
+        <BookmarkSimple size={32} />
+        Bookmarks
+      </Link>
+
+      <Link to="/lists">
+        <FileText size={32} />
+        Lists
+      </Link>
+
+      <Link to="/profile">
+        <User size={32} />
+        Profile
+      </Link>
+
+      <Link to="/more">
+        <DotsThreeCircle size={32} />
+        More
+      </Link>
     </MenuContainer>
   );
 };

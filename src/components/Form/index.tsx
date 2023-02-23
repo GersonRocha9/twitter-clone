@@ -15,7 +15,7 @@ export const Form = ({
   isAnswer = false,
 }: FormProps) => {
   return (
-    <FormContainer>
+    <FormContainer isAnswer={isAnswer}>
       <label htmlFor="tweet">
         <img src={imgSrc} alt={imgAlt} />
         <textarea id="tweet" placeholder={placeholder} />

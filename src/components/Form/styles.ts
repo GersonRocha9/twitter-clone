@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.form`
+interface FormProps {
+  isAnswer?: boolean;
+}
+
+export const FormContainer = styled.form<FormProps>`
   padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border-bottom: ${({ isAnswer }) => isAnswer && "1px solid #ebeef0"};
 
   label {
     display: flex;

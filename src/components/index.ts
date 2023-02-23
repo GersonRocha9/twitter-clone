@@ -4,7 +4,6 @@ export { Form } from "./Form";
 export { Header } from "./Header";
 export { Layout } from "./Layout";
 export { Menu } from "./Menu";
-export { MenuItem } from "./MenuItem";
 export { Separator } from "./Separator";
 export { Sidebar } from "./Sidebar";
 export { Tweet } from "./Tweet";
