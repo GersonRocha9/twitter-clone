@@ -42,4 +42,22 @@ export const FormContainer = styled.form<FormProps>`
   button {
     margin-left: auto;
   }
+
+  @media (max-width: 768px) {
+    label {
+      textarea {
+        font-size: 1rem;
+      }
+    }
+
+    button {
+      span {
+        display: none;
+      }
+
+      svg {
+        display: block;
+      }
+    }
+  }
 `;

@@ -1,7 +1,8 @@
 import { Button, Menu } from "../../components";
 
-import twitterLogo from "../../assets/logo-twitter.svg";
+import { Pencil } from "phosphor-react";
 import { SidebarContainer } from "./styles";
+import twitterLogo from "../../assets/logo-twitter.svg";
 
 export const Sidebar = () => {
   return (
@@ -10,7 +11,7 @@ export const Sidebar = () => {
 
       <Menu />
 
-      <Button label="Tweet" />
+      <Button label="Tweet" icon={<Pencil size={20} color="#fff" />} />
     </SidebarContainer>
   );
 };

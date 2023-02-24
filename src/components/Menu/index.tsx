@@ -17,42 +17,42 @@ export const Menu = () => {
     <MenuContainer>
       <Link to="/">
         <House weight="fill" size={32} />
-        Home
+        <span>Home</span>
       </Link>
 
       <Link to="/explore">
         <Hash size={32} />
-        Explore
+        <span>Explore</span>
       </Link>
 
       <Link to="/notifications">
         <Bell size={32} />
-        Notifications
+        <span>Notifications</span>
       </Link>
 
       <Link to="/messages">
         <Envelope size={32} />
-        Messages
+        <span>Messages</span>
       </Link>
 
       <Link to="/bookmarks">
         <BookmarkSimple size={32} />
-        Bookmarks
+        <span>Bookmarks</span>
       </Link>
 
       <Link to="/lists">
         <FileText size={32} />
-        Lists
+        <span>Lists</span>
       </Link>
 
       <Link to="/profile">
         <User size={32} />
-        Profile
+        <span>Profile</span>
       </Link>
 
       <Link to="/more">
         <DotsThreeCircle size={32} />
-        More
+        <span>More</span>
       </Link>
     </MenuContainer>
   );

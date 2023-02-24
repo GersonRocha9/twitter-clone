@@ -30,4 +30,27 @@ export const SidebarContainer = styled.aside`
       color: ${({ theme }) => theme.colors.base.primary};
     }
   }
+
+  button {
+    svg {
+      display: none;
+    }
+  }
+
+  @media (max-width: 780px) {
+    align-items: center;
+
+    button {
+      border-radius: 50%;
+      padding: 0.5rem;
+
+      svg {
+        display: block;
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
 `;

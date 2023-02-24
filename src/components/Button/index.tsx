@@ -3,12 +3,19 @@ import { ButtonContainer } from "./styles";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   width?: string;
+  icon?: React.ReactNode;
 }
 
-export const Button = ({ label, width = "100%", ...props }: ButtonProps) => {
+export const Button = ({
+  label,
+  width = "100%",
+  icon,
+  ...props
+}: ButtonProps) => {
   return (
     <ButtonContainer width={width} {...props}>
-      {label}
+      {icon}
+      <span>{label}</span>
     </ButtonContainer>
   );
 };

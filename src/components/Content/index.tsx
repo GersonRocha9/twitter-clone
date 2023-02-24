@@ -53,6 +53,7 @@ const mockedTweets = [
 
 export const Content = () => {
   const theme = useTheme();
+
   return (
     <ContentContainer>
       <Header

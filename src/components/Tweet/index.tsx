@@ -7,7 +7,7 @@ import {
   TweetParagraph,
 } from "./styles";
 
-interface TweetProps {
+export interface TweetProps {
   tweet: {
     imgSrc: string;
     imgAlt: string;

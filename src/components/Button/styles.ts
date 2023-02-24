@@ -17,6 +17,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   font-size: 1.25rem;
   border: 0;
   transition: filter 0.2s;
+  gap: 1rem;
 
   &:hover {
     filter: brightness(0.9);

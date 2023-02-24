@@ -1,7 +1,7 @@
 import { Timeline, TweetPage } from "../pages";
 
-import { createBrowserRouter } from "react-router-dom";
 import { Default } from "../layouts";
+import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
