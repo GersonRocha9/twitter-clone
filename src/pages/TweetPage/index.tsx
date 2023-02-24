@@ -1,55 +1,9 @@
 import { Form, Header, Separator, Tweet } from "../../components";
 
-import { Sparkle } from "phosphor-react";
-import { useTheme } from "styled-components";
 import { ContentContainer } from "../../components/Content/styles";
-
-const mockedTweets = [
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Acabei de migrar um projeto React GIGANTE de create-react-app para Vite e os resultados foram: <br /> <br /> ✅ npm start: De 32s para 400ms (sim, demorava 30s) <br /> ✅ npm build: De 120s para 22s <br /> <br /> Além disso, troquei do Yarn para o PNPM e o install das deps mudou de 24s para 8s 🔥 <br />",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Acabei de migrar um projeto React GIGANTE de create-react-app para Vite e os resultados foram: <br /> <br /> ✅ npm start: De 32s para 400ms (sim, demorava 30s) <br /> ✅ npm build: De 120s para 22s <br /> <br /> Além disso, troquei do Yarn para o PNPM e o install das deps mudou de 24s para 8s 🔥 <br />",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Acabei de migrar um projeto React GIGANTE de create-react-app para Vite e os resultados foram: <br /> <br /> ✅ npm start: De 32s para 400ms (sim, demorava 30s) <br /> ✅ npm build: De 120s para 22s <br /> <br /> Além disso, troquei do Yarn para o PNPM e o install das deps mudou de 24s para 8s 🔥 <br />",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Acabei de migrar um projeto React GIGANTE de create-react-app para Vite e os resultados foram: <br /> <br /> ✅ npm start: De 32s para 400ms (sim, demorava 30s) <br /> ✅ npm build: De 120s para 22s <br /> <br /> Além disso, troquei do Yarn para o PNPM e o install das deps mudou de 24s para 8s 🔥 <br />",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-];
+import { Sparkle } from "phosphor-react";
+import { mockedTweets } from "../../components/Content";
+import { useTheme } from "styled-components";
 
 const mockedComments = [
   {
@@ -57,7 +11,7 @@ const mockedComments = [
     imgAlt: "User Avatar",
     author: "Gerson Rocha",
     authorUsername: "@GersonRocha9",
-    content: "Concordo",
+    content: "Lorem Ipsum",
     comments: 12,
     retweets: 2,
     likes: 5,
@@ -67,7 +21,7 @@ const mockedComments = [
     imgAlt: "User Avatar",
     author: "Gerson Rocha",
     authorUsername: "@GersonRocha9",
-    content: "Olha, faz sentido",
+    content: "Lorem Ipsum",
     comments: 12,
     retweets: 2,
     likes: 5,
@@ -77,7 +31,7 @@ const mockedComments = [
     imgAlt: "User Avatar",
     author: "Gerson Rocha",
     authorUsername: "@GersonRocha9",
-    content: "Parabéns pelo projeto",
+    content: "Lorem Ipsum",
     comments: 12,
     retweets: 2,
     likes: 5,
