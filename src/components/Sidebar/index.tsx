@@ -40,7 +40,7 @@ export const Sidebar = () => {
   }
 
   supabase.auth.onAuthStateChange((event, session) => {
-    setUser(session?.user);
+    setUser(session?.user ?? null);
   });
 
   return (
