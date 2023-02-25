@@ -1,4 +1,4 @@
-import { Form, Header, Separator, Tweet } from "../../components";
+import { Form, Header, Separator } from "../../components";
 
 import { Sparkle } from "phosphor-react";
 import { useTheme } from "styled-components";
@@ -55,15 +55,15 @@ export const TweetPage = () => {
         icon={<Sparkle size={24} color={theme.colors.base.primary} />}
       />
 
-      <Tweet tweet={mockedTweets[0]} />
+      {/* <Tweet tweet={mockedTweets[0]} /> */}
 
       <Separator />
 
       <Form placeholder="Tweet your answer" isAnswer />
 
-      {mockedComments.map((tweet, index) => (
-        <Tweet key={index} tweet={tweet} />
-      ))}
+      {/* {mockedComments.map((tweet, index) => (
+        // <Tweet key={index} tweet={tweet} />
+      ))} */}
     </ContentContainer>
   );
 };
