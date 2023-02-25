@@ -54,3 +54,21 @@ export const SidebarContainer = styled.aside`
     }
   }
 `;
+
+export const UserContainerInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 780px) {
+    h3 {
+      display: none;
+    }
+  }
+`;

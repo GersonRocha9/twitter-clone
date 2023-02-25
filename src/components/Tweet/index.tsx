@@ -7,52 +7,30 @@ import {
   TweetParagraph,
 } from "./styles";
 
-export interface TweetProps {
-  tweet: {
-    imgSrc: string;
-    imgAlt: string;
-    author: string;
-    authorUsername: string;
-    content: string;
-    comments: number;
-    retweets: number;
-    likes: number;
-  };
-}
+import { TweetProps } from "../../@types/tweets";
 
-export const Tweet = ({
-  tweet: {
-    imgSrc,
-    imgAlt,
-    author,
-    authorUsername,
-    content,
-    comments,
-    retweets,
-    likes,
-  },
-}: TweetProps) => {
+export const Tweet = ({ avatar, name, username, content }: TweetProps) => {
   return (
     <TweetContainer to="/tweet">
-      <img src={imgSrc} alt={imgAlt} />
+      <img src={avatar} alt="User avatar" />
 
       <TweetContent>
         <TweetHeader>
-          <strong>{author}</strong>
-          <span>{authorUsername}</span>
+          <strong>{name}</strong>
+          <span>{username}</span>
         </TweetHeader>
 
         <TweetParagraph>{content}</TweetParagraph>
 
         <TweetFooter>
           <button>
-            <ChatCircle size={20} /> {comments}
+            <ChatCircle size={20} /> {Math.floor(Math.random() * 100)}
           </button>
           <button>
-            <ArrowsClockwise size={20} /> {retweets}
+            <ArrowsClockwise size={20} /> {Math.floor(Math.random() * 100)}
           </button>
           <button>
-            <Heart size={20} /> {likes}
+            <Heart size={20} /> {Math.floor(Math.random() * 100)}
           </button>
         </TweetFooter>
       </TweetContent>

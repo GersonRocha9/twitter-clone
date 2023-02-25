@@ -49,15 +49,5 @@ export const FormContainer = styled.form<FormProps>`
         font-size: 1rem;
       }
     }
-
-    button {
-      span {
-        display: none;
-      }
-
-      svg {
-        display: block;
-      }
-    }
   }
 `;

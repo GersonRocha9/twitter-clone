@@ -1,40 +1,47 @@
 import { Form, Header, Separator, Tweet } from "../../components";
 
-import { ContentContainer } from "../../components/Content/styles";
 import { Sparkle } from "phosphor-react";
-import { mockedTweets } from "../../components/Content";
 import { useTheme } from "styled-components";
+import { ContentContainer } from "../../components/Content/styles";
+
+const mockedTweets = [
+  {
+    id: 1,
+    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
+    name: "Gerson Rocha",
+    username: "@GersonRocha9",
+    content: "Lorem Ipsum",
+  },
+];
 
 const mockedComments = [
   {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
+    id: 1,
+    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
+    name: "Gerson Rocha",
+    username: "@GersonRocha9",
     content: "Lorem Ipsum",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
   },
   {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
+    id: 2,
+    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
+    name: "Gerson Rocha",
+    username: "@GersonRocha9",
     content: "Lorem Ipsum",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
   },
   {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
+    id: 3,
+    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
+    name: "Gerson Rocha",
+    username: "@GersonRocha9",
     content: "Lorem Ipsum",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
+  },
+  {
+    id: 4,
+    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
+    name: "Gerson Rocha",
+    username: "@GersonRocha9",
+    content: "Lorem Ipsum",
   },
 ];
 
@@ -52,15 +59,10 @@ export const TweetPage = () => {
 
       <Separator />
 
-      <Form
-        placeholder="Tweet your answer"
-        imgAlt="User Avatar"
-        imgSrc="https://avatars.githubusercontent.com/u/38770302?v=4"
-        isAnswer
-      />
+      <Form placeholder="Tweet your answer" isAnswer />
 
-      {mockedComments.map((comment, index) => (
-        <Tweet key={index} tweet={comment} />
+      {mockedComments.map((tweet, index) => (
+        <Tweet key={index} tweet={tweet} />
       ))}
     </ContentContainer>
   );

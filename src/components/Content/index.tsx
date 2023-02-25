@@ -1,58 +1,29 @@
+import { useEffect, useState } from "react";
 import { Form, Header, Separator, Tweet } from "../../components";
 
-import { ContentContainer } from "./styles";
+import { createClient } from "@supabase/supabase-js";
 import { Sparkle } from "phosphor-react";
 import { useTheme } from "styled-components";
+import { TweetProps } from "../../@types/tweets";
+import { ContentContainer } from "./styles";
 
-export const mockedTweets = [
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptatibus similique repudiandae nemo nesciunt placeat labore, hic aspernatur quibusdam ut quo deserunt asperiores reiciendis quas ad pariatur architecto voluptate explicabo?",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptatibus similique repudiandae nemo nesciunt placeat labore, hic aspernatur quibusdam ut quo deserunt asperiores reiciendis quas ad pariatur architecto voluptate explicabo?",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptatibus similique repudiandae nemo nesciunt placeat labore, hic aspernatur quibusdam ut quo deserunt asperiores reiciendis quas ad pariatur architecto voluptate explicabo?",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-  {
-    imgSrc: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    imgAlt: "User Avatar",
-    author: "Gerson Rocha",
-    authorUsername: "@GersonRocha9",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptatibus similique repudiandae nemo nesciunt placeat labore, hic aspernatur quibusdam ut quo deserunt asperiores reiciendis quas ad pariatur architecto voluptate explicabo?",
-    comments: 12,
-    retweets: 2,
-    likes: 5,
-  },
-];
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_KEY
+);
 
 export const Content = () => {
   const theme = useTheme();
+  const [tweets, setTweets] = useState<TweetProps[]>([]);
+
+  async function getTweetsFromDatabase() {
+    const { data: tweets } = await supabase.from("tweets").select("*");
+    setTweets(tweets as TweetProps[]);
+  }
+
+  useEffect(() => {
+    getTweetsFromDatabase();
+  }, []);
 
   return (
     <ContentContainer>
@@ -61,16 +32,12 @@ export const Content = () => {
         icon={<Sparkle size={24} color={theme.colors.base.primary} />}
       />
 
-      <Form
-        placeholder="What's happening?"
-        imgAlt="User Avatar"
-        imgSrc="https://avatars.githubusercontent.com/u/38770302?v=4"
-      />
+      <Form placeholder="What's happening?" />
 
       <Separator />
 
-      {mockedTweets.map((tweet, index) => (
-        <Tweet key={index} tweet={tweet} />
+      {tweets.map((tweet: TweetProps, index: number) => (
+        <Tweet key={index} {...tweet} />
       ))}
     </ContentContainer>
   );

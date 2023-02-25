@@ -1,33 +1,55 @@
-import { FormEvent, useState } from "react";
+import { User, createClient } from "@supabase/supabase-js";
+import { FormEvent, useEffect, useState } from "react";
 
-import { Button } from "../../components";
+import { TweetButton } from "../../components";
 import { FormContainer } from "./styles";
-import { PaperPlaneRight } from "phosphor-react";
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_KEY
+);
 
 interface FormProps {
   placeholder: string;
-  imgSrc: string;
-  imgAlt: string;
   isAnswer?: boolean;
 }
 
-export const Form = ({
-  placeholder,
-  imgSrc,
-  imgAlt,
-  isAnswer = false,
-}: FormProps) => {
-  const [inputContent, setInputContent] = useState("");
+interface UserProps {
+  user: User;
+}
 
-  function handleTweet(e: FormEvent) {
+export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
+  const [inputContent, setInputContent] = useState("");
+  const [user, setUser] = useState<UserProps>();
+
+  useEffect(() => {
+    const user = localStorage.getItem("sb-xxtuntovsqwoctyaevjq-auth-token");
+
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, []);
+
+  async function handleTweet(e: FormEvent) {
     e.preventDefault();
+
+    await supabase.from("tweets").insert({
+      name: user?.user?.user_metadata.full_name,
+      username: user?.user?.user_metadata.email,
+      content: inputContent,
+      avatar: user?.user?.user_metadata.avatar_url,
+    });
+
     setInputContent("");
   }
 
   return (
     <FormContainer isAnswer={isAnswer} onSubmit={handleTweet}>
       <label htmlFor="tweet">
-        <img src={imgSrc} alt={imgAlt} />
+        <img
+          src={user?.user?.user_metadata.avatar_url}
+          alt="User profile photo"
+        />
         <textarea
           id="tweet"
           placeholder={placeholder}
@@ -41,17 +63,10 @@ export const Form = ({
           }}
         />
 
-        {isAnswer && (
-          <Button
-            width="80px"
-            type="submit"
-            label="Answer"
-            icon={<PaperPlaneRight size={24} />}
-          />
-        )}
+        {isAnswer && <TweetButton width="120px" type="submit" label="Answer" />}
       </label>
 
-      {!isAnswer && <Button width="120px" type="submit" label="Tweet" />}
+      {!isAnswer && <TweetButton width="120px" type="submit" label="Tweet" />}
     </FormContainer>
   );
 };

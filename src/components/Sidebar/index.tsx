@@ -1,10 +1,11 @@
 import { User, createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
-import { Button, Menu } from "../../components";
+import { GoogleLogo, SignOut } from "phosphor-react";
+import { LoginButton, Menu } from "../../components";
+import { SidebarContainer, UserContainerInfo } from "./styles";
 
-import { Pencil } from "phosphor-react";
+import { useState } from "react";
+import { useTheme } from "styled-components";
 import twitterLogo from "../../assets/logo-twitter.svg";
-import { SidebarContainer } from "./styles";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -13,10 +14,14 @@ const supabase = createClient(
 
 export const Sidebar = () => {
   const [user, setUser] = useState<User | null>(null);
+  const theme = useTheme();
 
   async function signInWithGoogle() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+        redirectTo: "http://localhost:5173",
+      },
     });
   }
 
@@ -24,15 +29,11 @@ export const Sidebar = () => {
     await supabase.auth.signOut();
   }
 
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user) {
-        setUser(session.user);
-      } else {
-        setUser(null);
-      }
-    });
-  }, []);
+  supabase.auth.onAuthStateChange((_event, session) => {
+    if (session?.user) {
+      setUser(session.user);
+    }
+  });
 
   return (
     <SidebarContainer>
@@ -40,20 +41,31 @@ export const Sidebar = () => {
 
       <Menu />
 
-      {user && <h3>Olá {user?.user_metadata?.full_name}</h3>}
+      {user && (
+        <UserContainerInfo>
+          <img src={user?.user_metadata?.avatar_url} alt="User avatar" />
+          <h3>Olá, {user?.user_metadata?.full_name}</h3>
+        </UserContainerInfo>
+      )}
 
       {!user && (
-        <Button
+        <LoginButton
           label="Entrar com Google"
-          icon={<Pencil size={20} color="#fff" />}
+          icon={
+            <GoogleLogo
+              size={20}
+              color={theme.colors.base.primary}
+              weight="bold"
+            />
+          }
           onClick={signInWithGoogle}
         />
       )}
 
       {user && (
-        <Button
+        <LoginButton
           label="Sair"
-          icon={<Pencil size={20} color="#fff" />}
+          icon={<SignOut size={20} color={theme.colors.base.primary} />}
           onClick={signout}
         />
       )}
