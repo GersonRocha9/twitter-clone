@@ -2,7 +2,7 @@ import { Form, Header, Separator, Tweet } from "../../components";
 
 import { Sparkle } from "phosphor-react";
 import { useTheme } from "styled-components";
-import { ContentContainer } from "../../components/Content/styles";
+import { ContentContainer } from "./styles";
 
 const mockedTweets = [
   {

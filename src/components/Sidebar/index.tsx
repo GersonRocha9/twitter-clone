@@ -28,7 +28,7 @@ export const Sidebar = () => {
         </UserContainerInfo>
       )}
 
-      {!user && (
+      {!isLogged && (
         <LoginButton
           label="Entrar com Google"
           icon={
@@ -42,7 +42,7 @@ export const Sidebar = () => {
         />
       )}
 
-      {user && (
+      {isLogged && (
         <LoginButton
           label="Sair"
           icon={<SignOut size={20} color={theme.colors.base.primary} />}
