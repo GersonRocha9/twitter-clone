@@ -1,25 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { TweetContextData, TweetProps } from "../../@types";
 import { Form, Header, Separator, Tweet } from "../../components";
 
-import { createClient } from "@supabase/supabase-js";
 import { Sparkle } from "phosphor-react";
 import { useTheme } from "styled-components";
-import { TweetProps } from "../../@types";
+import { TweetContext } from "../../contexts";
 import { ContentContainer } from "./styles";
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_KEY
-);
 
 export const Content = () => {
   const theme = useTheme();
-  const [tweets, setTweets] = useState<TweetProps[]>([]);
 
-  async function getTweetsFromDatabase() {
-    const { data: tweets } = await supabase.from("tweets").select("*");
-    setTweets(tweets as TweetProps[]);
-  }
+  const { tweets, getTweetsFromDatabase } = useContext(
+    TweetContext
+  ) as TweetContextData;
 
   useEffect(() => {
     getTweetsFromDatabase();

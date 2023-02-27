@@ -1,9 +1,9 @@
 import { FormEvent, useContext, useState } from "react";
+import { AuthContextData, TweetContextData } from "../../@types";
+import { AuthContext, TweetContext } from "../../contexts";
 
 import { createClient } from "@supabase/supabase-js";
-import { AuthContextData } from "../../@types";
 import { TweetButton } from "../../components";
-import { AuthContext } from "../../contexts";
 import { FormContainer } from "./styles";
 
 const supabase = createClient(
@@ -19,6 +19,9 @@ interface FormProps {
 export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
   const [inputContent, setInputContent] = useState("");
   const { user, isLogged } = useContext(AuthContext) as AuthContextData;
+  const { getTweetsFromDatabase } = useContext(
+    TweetContext
+  ) as TweetContextData;
 
   async function handleTweet(e: FormEvent) {
     e.preventDefault();
@@ -30,6 +33,7 @@ export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
       avatar: user?.user_metadata.avatar_url,
     });
 
+    getTweetsFromDatabase();
     setInputContent("");
   }
 

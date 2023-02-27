@@ -6,3 +6,8 @@ export interface TweetProps {
   content: string;
   avatar: string;
 }
+
+export interface TweetContextData {
+  tweets: TweetProps[];
+  getTweetsFromDatabase: () => Promise<void>;
+}
