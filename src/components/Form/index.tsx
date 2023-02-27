@@ -1,7 +1,9 @@
-import { User, createClient } from "@supabase/supabase-js";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 
+import { createClient } from "@supabase/supabase-js";
+import { AuthContextData } from "../../@types";
 import { TweetButton } from "../../components";
+import { AuthContext } from "../../contexts";
 import { FormContainer } from "./styles";
 
 const supabase = createClient(
@@ -14,30 +16,18 @@ interface FormProps {
   isAnswer?: boolean;
 }
 
-interface UserProps {
-  user: User;
-}
-
 export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
   const [inputContent, setInputContent] = useState("");
-  const [user, setUser] = useState<UserProps>();
-
-  useEffect(() => {
-    const user = localStorage.getItem("sb-xxtuntovsqwoctyaevjq-auth-token");
-
-    if (user) {
-      setUser(JSON.parse(user));
-    }
-  }, []);
+  const { user, isLogged } = useContext(AuthContext) as AuthContextData;
 
   async function handleTweet(e: FormEvent) {
     e.preventDefault();
 
     await supabase.from("tweets").insert({
-      name: user?.user?.user_metadata.full_name,
-      username: user?.user?.user_metadata.email,
+      name: user?.user_metadata.full_name,
+      username: user?.user_metadata.email,
       content: inputContent,
-      avatar: user?.user?.user_metadata.avatar_url,
+      avatar: user?.user_metadata.avatar_url,
     });
 
     setInputContent("");
@@ -45,11 +35,11 @@ export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
 
   return (
     <>
-      {user?.user?.user_metadata.avatar_url ? (
+      {isLogged ? (
         <FormContainer isAnswer={isAnswer} onSubmit={handleTweet}>
           <label htmlFor="tweet">
             <img
-              src={user?.user?.user_metadata.avatar_url}
+              src={user?.user_metadata.avatar_url}
               alt="User profile photo"
             />
             <textarea

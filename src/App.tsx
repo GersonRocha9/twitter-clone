@@ -1,12 +1,15 @@
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "./styles/themes";
+import { AuthProvider } from "./contexts";
 import { router } from "./routes";
+import { lightTheme } from "./styles/themes";
 
 export const App = () => {
   return (
     <ThemeProvider theme={lightTheme}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ThemeProvider>
   );
 };

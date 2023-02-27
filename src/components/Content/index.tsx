@@ -4,7 +4,7 @@ import { Form, Header, Separator, Tweet } from "../../components";
 import { createClient } from "@supabase/supabase-js";
 import { Sparkle } from "phosphor-react";
 import { useTheme } from "styled-components";
-import { TweetProps } from "../../@types/tweets";
+import { TweetProps } from "../../@types";
 import { ContentContainer } from "./styles";
 
 const supabase = createClient(

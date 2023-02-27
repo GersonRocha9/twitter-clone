@@ -7,7 +7,7 @@ import {
   TweetParagraph,
 } from "./styles";
 
-import { TweetProps } from "../../@types/tweets";
+import { TweetProps } from "../../@types";
 
 export const Tweet = ({ avatar, name, username, content }: TweetProps) => {
   return (
