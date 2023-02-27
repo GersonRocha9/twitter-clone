@@ -1,7 +1,7 @@
+import { AuthProvider, TweetProvider } from "./contexts";
+
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { AuthProvider } from "./contexts";
-import { TweetProvider } from "./contexts/TweetProvider";
 import { router } from "./routes";
 import { lightTheme } from "./styles/themes";
 
