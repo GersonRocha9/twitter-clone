@@ -14,7 +14,7 @@ Clone da interface do Twitter, com layout responsivo implementando as funcionali
 <br>
 
 <p align="center">
-  <img src="./src/assets/twitter-cover.png" alt="Twitter Cover App" width="800" align="center"/>
+  <img src=".github/twitter-cover.png" alt="Twitter Cover App" width="800" align="center"/>
 </p>
 <br>
 
@@ -25,12 +25,18 @@ Clone da interface do Twitter, com layout responsivo implementando as funcionali
 - Supabase
 - React Router DOM
 - Styled Components
+- ContextAPI
+- ESLint
 
 # Inicialização
 
-## Web
+Para clonar o repositório, rode o seguinte comando no terminal:
 
-Para rodar o projeto web, entre na pasta `web` presente no diretório raiz, e rode o comando para instalar as dependências:
+```
+git clone https://github.com/GersonRocha9/twitter-clone.git
+```
+
+Para rodar o projeto, entre na pasta do diretório raiz, e rode o comando para instalar as dependências:
 
 ```
 npm i
