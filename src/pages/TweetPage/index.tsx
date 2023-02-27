@@ -1,47 +1,30 @@
+import { useContext, useEffect } from "react";
 import { Form, Header, Separator, Tweet } from "../../components";
 
 import { Sparkle } from "phosphor-react";
+import { useParams } from "react-router-dom";
 import { useTheme } from "styled-components";
+import { TweetContextData } from "../../@types";
+import { TweetContext } from "../../contexts";
 import { ContentContainer } from "./styles";
-
-const mockedTweets = [
-  {
-    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    name: "Gerson Rocha",
-    username: "@GersonRocha9",
-    content: "Lorem Ipsum",
-  },
-];
-
-const mockedComments = [
-  {
-    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    name: "Gerson Rocha",
-    username: "@GersonRocha9",
-    content: "Lorem Ipsum",
-  },
-  {
-    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    name: "Gerson Rocha",
-    username: "@GersonRocha9",
-    content: "Lorem Ipsum",
-  },
-  {
-    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    name: "Gerson Rocha",
-    username: "@GersonRocha9",
-    content: "Lorem Ipsum",
-  },
-  {
-    avatar: "https://avatars.githubusercontent.com/u/38770302?v=4",
-    name: "Gerson Rocha",
-    username: "@GersonRocha9",
-    content: "Lorem Ipsum",
-  },
-];
 
 export const TweetPage = () => {
   const theme = useTheme();
+  const { id } = useParams();
+  const {
+    getTweetFromDatabaseWithId,
+    getCommentsFromDatabaseWithId,
+    comments,
+    tweet,
+  } = useContext(TweetContext) as TweetContextData;
+
+  useEffect(() => {
+    getTweetFromDatabaseWithId(id as string);
+  }, []);
+
+  useEffect(() => {
+    getCommentsFromDatabaseWithId(id as string);
+  }, [id]);
 
   return (
     <ContentContainer>
@@ -50,14 +33,14 @@ export const TweetPage = () => {
         icon={<Sparkle size={24} color={theme.colors.base.primary} />}
       />
 
-      <Tweet {...mockedTweets[0]} />
+      <Tweet {...tweet} />
 
       <Separator />
 
       <Form placeholder="Tweet your answer" isAnswer />
 
-      {mockedComments.map((tweet, index) => (
-        <Tweet key={index} {...tweet} />
+      {comments.map((comment, index) => (
+        <Tweet key={index} {...comment} />
       ))}
     </ContentContainer>
   );

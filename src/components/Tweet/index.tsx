@@ -9,9 +9,9 @@ import {
 
 import { TweetProps } from "../../@types";
 
-export const Tweet = ({ avatar, name, username, content }: TweetProps) => {
+export const Tweet = ({ id, avatar, name, username, content }: TweetProps) => {
   return (
-    <TweetContainer to="/tweet">
+    <TweetContainer to={`/tweet/${id}`}>
       <img src={avatar} alt="User avatar" />
 
       <TweetContent>

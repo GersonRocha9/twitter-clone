@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
         element: <Timeline />,
       },
       {
-        path: "/tweet",
+        path: "/tweet/:id",
         element: <TweetPage />,
       },
       {

@@ -3,6 +3,7 @@ import { AuthContextData, TweetContextData } from "../../@types";
 import { AuthContext, TweetContext } from "../../contexts";
 
 import { createClient } from "@supabase/supabase-js";
+import { useParams } from "react-router-dom";
 import { TweetButton } from "../../components";
 import { FormContainer } from "./styles";
 
@@ -19,11 +20,13 @@ interface FormProps extends React.HTMLAttributes<HTMLFormElement> {
 export const Form = ({
   placeholder,
   isAnswer = false,
+
   ...props
 }: FormProps) => {
+  const { id } = useParams();
   const [inputContent, setInputContent] = useState("");
   const { user, isLogged } = useContext(AuthContext) as AuthContextData;
-  const { getTweetsFromDatabase } = useContext(
+  const { getTweetsFromDatabase, getCommentsFromDatabaseWithId } = useContext(
     TweetContext
   ) as TweetContextData;
 
@@ -41,8 +44,27 @@ export const Form = ({
     setInputContent("");
   }
 
+  async function handleAnswer(e: FormEvent) {
+    e.preventDefault();
+
+    await supabase.from("comments").insert({
+      name: user?.user_metadata.full_name,
+      username: user?.user_metadata.email,
+      content: inputContent,
+      avatar: user?.user_metadata.avatar_url,
+      tweet_id: id,
+    });
+
+    setInputContent("");
+    getCommentsFromDatabaseWithId(id as string);
+  }
+
   return isLogged ? (
-    <FormContainer isAnswer={isAnswer} onSubmit={handleTweet} {...props}>
+    <FormContainer
+      isAnswer={isAnswer}
+      onSubmit={isAnswer ? handleAnswer : handleTweet}
+      {...props}
+    >
       <label htmlFor="tweet">
         <img src={user?.user_metadata.avatar_url} alt="User profile photo" />
         <textarea
@@ -53,7 +75,7 @@ export const Form = ({
           onKeyDown={(e) => {
             if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
               e.preventDefault();
-              handleTweet(e);
+              isAnswer ? handleAnswer(e) : handleTweet(e);
             }
           }}
         />
