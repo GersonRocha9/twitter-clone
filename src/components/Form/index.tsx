@@ -44,29 +44,50 @@ export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
   }
 
   return (
-    <FormContainer isAnswer={isAnswer} onSubmit={handleTweet}>
-      <label htmlFor="tweet">
-        <img
-          src={user?.user?.user_metadata.avatar_url}
-          alt="User profile photo"
-        />
-        <textarea
-          id="tweet"
-          placeholder={placeholder}
-          value={inputContent}
-          onChange={(e) => setInputContent(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-              e.preventDefault();
-              handleTweet(e);
-            }
+    <>
+      {user?.user?.user_metadata.avatar_url ? (
+        <FormContainer isAnswer={isAnswer} onSubmit={handleTweet}>
+          <label htmlFor="tweet">
+            <img
+              src={user?.user?.user_metadata.avatar_url}
+              alt="User profile photo"
+            />
+            <textarea
+              id="tweet"
+              placeholder={placeholder}
+              value={inputContent}
+              onChange={(e) => setInputContent(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+                  e.preventDefault();
+                  handleTweet(e);
+                }
+              }}
+            />
+
+            {isAnswer && (
+              <TweetButton width="120px" type="submit" label="Answer" />
+            )}
+          </label>
+
+          {!isAnswer && (
+            <TweetButton width="120px" type="submit" label="Tweet" />
+          )}
+        </FormContainer>
+      ) : (
+        <p
+          style={{
+            padding: "1rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "1.5rem",
+            fontWeight: 600,
           }}
-        />
-
-        {isAnswer && <TweetButton width="120px" type="submit" label="Answer" />}
-      </label>
-
-      {!isAnswer && <TweetButton width="120px" type="submit" label="Tweet" />}
-    </FormContainer>
+        >
+          Faça login para tweetar
+        </p>
+      )}
+    </>
   );
 };
