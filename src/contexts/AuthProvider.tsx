@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   async function signOut() {
     await supabase.auth.signOut();
+    setUser(null);
   }
 
   supabase.auth.onAuthStateChange((_event, session) => {
