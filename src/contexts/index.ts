@@ -1,2 +1,2 @@
-export { AuthContext, AuthProvider } from "./AuthProvider";
-export { TweetContext, TweetProvider } from "./TweetProvider";
+export { AuthContext, AuthProvider } from "./AuthContext";
+export { TweetContext, TweetProvider } from "./TweetContext";

@@ -11,12 +11,16 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_KEY
 );
 
-interface FormProps {
+interface FormProps extends React.HTMLAttributes<HTMLFormElement> {
   placeholder: string;
   isAnswer?: boolean;
 }
 
-export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
+export const Form = ({
+  placeholder,
+  isAnswer = false,
+  ...props
+}: FormProps) => {
   const [inputContent, setInputContent] = useState("");
   const { user, isLogged } = useContext(AuthContext) as AuthContextData;
   const { getTweetsFromDatabase } = useContext(
@@ -37,31 +41,27 @@ export const Form = ({ placeholder, isAnswer = false }: FormProps) => {
     setInputContent("");
   }
 
-  return (
-    isLogged && (
-      <FormContainer isAnswer={isAnswer} onSubmit={handleTweet}>
-        <label htmlFor="tweet">
-          <img src={user?.user_metadata.avatar_url} alt="User profile photo" />
-          <textarea
-            id="tweet"
-            placeholder={placeholder}
-            value={inputContent}
-            onChange={(e) => setInputContent(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-                e.preventDefault();
-                handleTweet(e);
-              }
-            }}
-          />
+  return isLogged ? (
+    <FormContainer isAnswer={isAnswer} onSubmit={handleTweet} {...props}>
+      <label htmlFor="tweet">
+        <img src={user?.user_metadata.avatar_url} alt="User profile photo" />
+        <textarea
+          id="tweet"
+          placeholder={placeholder}
+          value={inputContent}
+          onChange={(e) => setInputContent(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+              e.preventDefault();
+              handleTweet(e);
+            }
+          }}
+        />
 
-          {isAnswer && (
-            <TweetButton width="120px" type="submit" label="Answer" />
-          )}
-        </label>
+        {isAnswer && <TweetButton width="120px" type="submit" label="Answer" />}
+      </label>
 
-        {!isAnswer && <TweetButton width="120px" type="submit" label="Tweet" />}
-      </FormContainer>
-    )
-  );
+      {!isAnswer && <TweetButton width="120px" type="submit" label="Tweet" />}
+    </FormContainer>
+  ) : null;
 };
