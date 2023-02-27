@@ -13,6 +13,14 @@ Clone da interface do Twitter, com layout responsivo implementando as funcionali
 
 <br>
 
+# Acesso ao projeto
+
+<h4>O projeto está hospedado na Vercel e pode ser utilizado através do link: <a href="https://twitter-clone-teal-two.vercel.app/" target="_blank">https://twitter-clone-teal-two.vercel.app/</a>  <br>
+Para fazer um tweet, basta fazer login com a conta do Google e publicar um novo tweet.
+</h4>
+
+<br>
+
 <p align="center">
   <img src=".github/twitter-cover.png" alt="Twitter Cover App" width="800" align="center"/>
 </p>
